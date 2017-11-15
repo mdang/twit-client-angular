@@ -9,18 +9,17 @@ import { TwitService } from '../twit.service';
 })
 export class TweetsComponent implements OnInit, OnDestroy {
   private tweets = [];
-  private connection;
+  private stream;
 
   constructor(private twitService: TwitService) { }
 
   ngOnInit() {
-    this.connection = this.twitService.getTweets().subscribe(tweet => {
-      console.log('new tweet', tweet);
+    this.stream = this.twitService.getTweets().subscribe(tweet => {
       this.tweets.unshift(tweet);
     });
   }
 
   ngOnDestroy() {
-    this.connection.unsubscribe();
+    this.stream.unsubscribe();
   }
 }

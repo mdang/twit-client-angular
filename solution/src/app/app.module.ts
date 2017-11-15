@@ -5,9 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TweetsComponent } from './tweets/tweets.component';
 import { SearchComponent } from './search/search.component';
+import { TweetComponent } from './tweet/tweet.component';
 
 import { TwitService } from './twit.service';
-import { TweetComponent } from './tweet/tweet.component';
 
 @NgModule({
   declarations: [

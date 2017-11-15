@@ -11,17 +11,17 @@ export class TwitService {
 
   constructor() {
     this.socket = io(this.url);
-    this.socket.on('client connected', () => {
+    this.socket.on('connect', () => {
       console.log('Connection established');
     });
 
     this.socket.on('updatedTerm', term => {
-      console.log('Now streaming tweets for ', term);
-    })
-  }
+      console.log('Streaming tweets for', term);
+    });
 
-  updateTerm(term) {
-    this.socket.emit('updateTerm', term);
+    this.socket.on('stopped', () => {
+      console.log('Stream stopped');
+    });
   }
 
   getTweets() {
@@ -38,10 +38,12 @@ export class TwitService {
     return observable;
   }
 
-  disconnect() {
-    
+  updateTerm(term) {
+    this.socket.emit('updateTerm', term);
   }
 
-
+  stop() {
+    this.socket.emit('stop');
+  }
 
 }

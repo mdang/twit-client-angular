@@ -1,6 +1,6 @@
-<h3></h3>
+<h3>{{ currentTermMessage }}</h3>
 
-<form action="/" name="search" (ngSubmit)="updateTerm()">
+<form name="search" (ngSubmit)="updateTerm()">
   <div class="form-group">
     <input
       name="term"
@@ -10,5 +10,5 @@
       class="form-control">
   </div>
   <input type="submit" value="Search" class="btn btn-primary">
-  <a href="#" class="stop">Stop stream</a>
+  <a class="stop" (click)="stop($event)">Stop stream</a>
 </form>

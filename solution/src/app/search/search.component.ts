@@ -8,14 +8,20 @@ import { TwitService } from '../twit.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  term: string;
+  private term: string;
+  private currentSearchMessage: string = '';
 
   constructor(private twitService: TwitService) { }
 
-  updateTerm() {
+  updateTerm(): void {
     this.twitService.updateTerm(this.term);
+    this.currentSearchMessage = `Streaming tweets for ${ this.term }`;
   }
 
-  ngOnInit() {}
+  stop(e): void {
+    this.twitService.stop();
+    e.preventDefault();
+  }
 
+  ngOnInit() { }
 }
