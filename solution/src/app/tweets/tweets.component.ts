@@ -8,7 +8,7 @@ import { TwitService } from '../twit.service';
   styleUrls: ['./tweets.component.css']
 })
 export class TweetsComponent implements OnInit, OnDestroy {
-  tweets = [];
+  private tweets = [];
   private connection;
 
   constructor(private twitService: TwitService) { }
@@ -16,12 +16,11 @@ export class TweetsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.connection = this.twitService.getTweets().subscribe(tweet => {
       console.log('new tweet', tweet);
-      this.tweets.push(tweet);
+      this.tweets.unshift(tweet);
     });
   }
 
   ngOnDestroy() {
     this.connection.unsubscribe();
   }
-
 }

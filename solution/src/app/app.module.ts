@@ -7,12 +7,14 @@ import { TweetsComponent } from './tweets/tweets.component';
 import { SearchComponent } from './search/search.component';
 
 import { TwitService } from './twit.service';
+import { TweetComponent } from './tweet/tweet.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TweetsComponent,
-    SearchComponent
+    SearchComponent,
+    TweetComponent
   ],
   imports: [
     BrowserModule,
