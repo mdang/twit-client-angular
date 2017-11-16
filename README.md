@@ -19,14 +19,18 @@ The starter code contains the base HTML and styling from the Twit Server lesson.
 ## Set up Components 
 
 ```
+$ ng g c search
+```
+
+```
 $ ng g c tweets
 ```
 
 ```
-$ ng g c search
+$ ng g c tweet
 ```
 
-Move the HTML from app.component.html to the correct component HTML files. Add in the component tags for those components.
+Move the HTML from **app.component.html** to the correct component HTML files. Add in the component tags for those components.
 
 Your **app.component.html** should look like this now: 
 
@@ -66,45 +70,6 @@ We'll need to import it to the top of our service now.
 import * as io from 'socket.io-client';
 ```
 
-Let's add two instance variables, one for the server URL and for the socket connection itself. 
+## Code-along
 
-```js
-// twit.service.ts
-private url = 'http://localhost:3000';
-private socket;
-```
-
-```js
-// twit.service.ts
-  constructor() {
-    this.socket = io(this.url);
-    this.socket.on('client connected', () => {
-      console.log('Connection established');
-    });
-  }
-```
-
-## Post the Search Term
-
-```js
-// twit.service.ts
-  updateTerm(term) {
-    this.socket.emit('updateTerm', term);
-  }
-```
-
-```
-
-```
-
-## Create an Observable 
-
-We'll want to create an obervable that components can subscribe to, but keep in mind we need to not only be able to subscribe to the observable but push updates to it as well. For this reason we'll need to use subjects. 
-
-```js
-// twit.service.ts
-import { Observable } from 'rxjs/Observable';
-```
-
-
-
+Now that we're set up, follow along with the code-along for the rest of the application. 

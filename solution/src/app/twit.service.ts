@@ -24,7 +24,7 @@ export class TwitService {
     });
   }
 
-  getTweets() {
+  getTweets(): Observable<object> {
     const observable = new Observable(observer => {
       this.socket.on('tweets', tweet => {
         observer.next(tweet);
@@ -38,11 +38,11 @@ export class TwitService {
     return observable;
   }
 
-  updateTerm(term) {
+  updateTerm(term): void {
     this.socket.emit('updateTerm', term);
   }
 
-  stop() {
+  stop(): void {
     this.socket.emit('stop');
   }
 
